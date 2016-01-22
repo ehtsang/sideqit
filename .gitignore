@@ -1,0 +1,8 @@
+# Compiled stuff
+*.class
+
+# Text backup files
+*.s[a-w][a-z]
+*~
+\#*\#
+.\#*
