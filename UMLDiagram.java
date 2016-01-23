@@ -8,10 +8,8 @@ public class UMLDiagram implements Diagram {
 
     public String generateDiagram() {return "";}
 
-    private ArrayList<Method> methods;
-    private ArrayList<Variable> variables;
-
-    public void findMethods(String path) {
+    public ArrayList<Method> findMethods(String path) {
+        ArrayList<Method> methods = new ArrayList<Method>();
         String contents = FileFinder.readFile(path);
         Matcher matcher = Pattern.compile("((?:public|protected|private|abstract|\\s)(?:\\sstatic)?) +([\\w\\<\\>\\[\\]]+)\\s+(\\w+) *\\(([^\\)]*)\\) *(\\{?|[^;])").matcher(contents);
         while (matcher.find()) {
@@ -22,10 +20,25 @@ public class UMLDiagram implements Diagram {
             Method method = new Method(name, returnType, modifier, parameters);
             methods.add(method);
         }
+        return methods;
+    }
+
+    public ArrayList<Variable> findVariables(String path) {
+        ArrayList<Variable> variables = new ArrayList<Variable>();
+        String contents = FileFinder.readFile(path);
+        Matcher matcher = Pattern.compile("((?:public|protected|private|static|final)+) +([\\w\\<\\>\\[\\]]+) +(\\w+)(;|=)").matcher(contents);
+        while (matcher.find()) {
+            String modifier = matcher.group(1).trim();
+            String type = matcher.group(2).trim();
+            String name = matcher.group(3).trim();
+            Variable variable = new Variable(name, modifier, type);
+            variables.add(variable);
+        }
+        return variables;
     }
 
     public static void main(String[] args) {
         UMLDiagram diagram = new UMLDiagram();
-        diagram.findMethods("UMLDiagram.java");
+        diagram.findVariables("Method.java");
     }
 }
