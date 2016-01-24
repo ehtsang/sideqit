@@ -31,14 +31,19 @@ public class UMLDiagram implements Diagram {
             String modifier = matcher.group(1).trim();
             String type = matcher.group(2).trim();
             String name = matcher.group(3).trim();
-            Variable variable = new Variable(name, modifier, type);
+            System.out.println(modifier);
+	    Variable variable = new Variable(name, modifier, type);
             variables.add(variable);
         }
         return variables;
     }
 
     public static void main(String[] args) {
-        UMLDiagram diagram = new UMLDiagram();
-        diagram.findVariables("Method.java");
+        ArrayList<Method> methods = new ArrayList<Method>();
+	UMLDiagram diagram = new UMLDiagram();
+	methods = diagram.findMethods("Method.java");
+    	for(Method method : methods){
+		System.out.println(method);
+	}
     }
 }
