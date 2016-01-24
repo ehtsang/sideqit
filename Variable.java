@@ -27,6 +27,6 @@ public class Variable extends Structure {
     }
 
     public String toString() {
-        return "";
+        return getType() + " " + getName();
     }
 }

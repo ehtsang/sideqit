@@ -45,6 +45,6 @@ public class Method extends Structure {
     }
 
     public String toString() {
-        return "Modifier: " + getModifier() + "; Method Name: " + getName() + "; Return Type: " + getReturnType();
+        return getModifier() + " " + getName() + " " + getReturnType();
     }
 }

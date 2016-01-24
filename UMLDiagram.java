@@ -31,7 +31,7 @@ public class UMLDiagram implements Diagram {
             String modifier = matcher.group(1).trim();
             String type = matcher.group(2).trim();
             String name = matcher.group(3).trim();
-            System.out.println(modifier);
+            // System.out.println(modifier); //TESTING PURPOSES
 	    Variable variable = new Variable(name, modifier, type);
             variables.add(variable);
         }
@@ -40,10 +40,17 @@ public class UMLDiagram implements Diagram {
 
     public static void main(String[] args) {
         ArrayList<Method> methods = new ArrayList<Method>();
+	ArrayList<Variable> variables = new ArrayList<Variable>();
 	UMLDiagram diagram = new UMLDiagram();
 	methods = diagram.findMethods("Method.java");
-    	for(Method method : methods){
+	variables = diagram.findVariables("Method.java");
+    	System.out.println("Methods");
+	for(Method method : methods){
 		System.out.println(method);
+	}
+	System.out.println("Variables");
+	for(Variable variable : variables){
+		System.out.println(variable);
 	}
     }
 }
