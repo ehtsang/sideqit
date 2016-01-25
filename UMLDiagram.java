@@ -61,16 +61,23 @@ public class UMLDiagram implements Diagram {
     public static void main(String[] args) {
         ArrayList<Method> methods = new ArrayList<Method>();
         ArrayList<Variable> variables = new ArrayList<Variable>();
+	ArrayList<String> files = new ArrayList<String>();
+	FileFinder.findFiles(".", files, ".java");
+	//System.out.println(files);
         UMLDiagram diagram = new UMLDiagram();
-        methods = diagram.findMethods("Method.java");
-        variables = diagram.findVariables("Method.java");
-        System.out.println("-->Methods");
-        for(Method method : methods){
-            System.out.println("--|" + method);
-        }
-        System.out.println("-->Variables");
-        for(Variable variable : variables){
-            System.out.println("--|" + variable);
-        }
+        for(String filename : files){
+		System.out.println("-" + filename);
+		methods = diagram.findMethods(filename);
+        	variables = diagram.findVariables(filename);
+        	System.out.println("-->Methods");
+        	for(Method method : methods){
+        	    System.out.println("--|" + method);
+        	}
+        	System.out.println("-->Variables");
+        	for(Variable variable : variables){
+        	    System.out.println("--|" + variable);
+    		}
+		System.out.println();
+	}
     }
 }
