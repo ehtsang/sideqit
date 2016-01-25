@@ -20,7 +20,9 @@ public class UMLDiagram implements Diagram {
         //System.out.println(files);
         UMLDiagram diagram = new UMLDiagram();
         for(String filePath : files){
-            System.out.println(filePath.substring(filePath.lastIndexOf("/")+1));
+	    String os = System.getProperty("os.name");
+	    System.out.println(os);
+            System.out.println(filePath.substring(filePath.lastIndexOf("\\")+1));
             methods = diagram.findMethods(filePath);
             variables = diagram.findVariables(filePath);
             System.out.println("-->Methods:");

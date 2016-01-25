@@ -85,7 +85,7 @@ public class Method extends Structure {
         //String parameters = getParameters().toString().replace("[", "(").replace("]", ")").replace("  ", " "); //Bad solution, a reminder to never do this
 	String param = "(";
 	for(String parameter : parameters){
-		param += parameter;
+		param += parameter + ", ";
 	}
 	param += ")";
 	if(!getReturnType().equals("")){
