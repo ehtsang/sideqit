@@ -23,7 +23,7 @@ public class UMLDiagram implements Diagram {
             os = System.getProperty("os.name");
 
             // Different file path delimiters...
-            if (os.contains("windows")) {
+            if (os.contains("Windows")) {
                 delimiter = "\\";
             } else {
                 delimiter = "/";
