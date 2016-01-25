@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 public class FileFinder {
 
+    /*
+    O(N)
+    Pre-condition: Path is a file
+    Post-condition: String with the contents of the file
+    */
     public static String readFile(String path) {
         String contents = "";
         try {
@@ -26,6 +31,11 @@ public class FileFinder {
         return contents;
     }
 
+    /*
+    O(N^2)
+    Pre-condition: Path exists
+    Post-condition: An ArrayList of Strings that includes the files with the inputted ending
+    */
     public static void findFiles(String path, ArrayList<String> fileNames, String ending) {
         File directory = new File(path);
         File[] files = directory.listFiles();

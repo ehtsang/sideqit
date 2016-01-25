@@ -7,6 +7,11 @@ import java.util.regex.Pattern;
 
 public class UMLDiagram implements Diagram {
 
+    /*
+    O(N^2)
+    Pre-condition: Takes a valid path
+    Post-condition: Prints out a full UML diagram
+    */
     public static void generateDiagram(String path) {
         ArrayList<Method> methods = new ArrayList<Method>();
         ArrayList<Variable> variables = new ArrayList<Variable>();
@@ -30,6 +35,11 @@ public class UMLDiagram implements Diagram {
         }
     }
 
+    /*
+    O(N^2)
+    Pre-condition: Path exists
+    Post-condition: An ArrayList full of the found methods
+    */
     public ArrayList<Method> findMethods(String path) {
         String name, modifier, returnType;
 
@@ -64,6 +74,11 @@ public class UMLDiagram implements Diagram {
         return methods;
     }
 
+    /*
+    O(N^2)
+    Pre-condition: The path exists
+    Post-condition: An ArrayList full of the found variables
+    */
     public ArrayList<Variable> findVariables(String path) {
         ArrayList<Variable> variables = new ArrayList<Variable>();
         String contents = FileFinder.readFile(path);
@@ -78,6 +93,11 @@ public class UMLDiagram implements Diagram {
         return variables;
     }
 
+    /*
+    O(N^2)
+    Pre-condition: A potential argument may be given
+    Post-condition: A UML Diagram is generated
+    */
     public static void main(String[] args) {
         if(args.length < 1){
             System.out.println("Please provide an argument.");
