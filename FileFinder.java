@@ -45,7 +45,7 @@ public class FileFinder {
                 findFiles(file.getAbsolutePath(), fileNames, ending);
             }
             else {
-                String fileName = file.getName();
+                String fileName = file.getPath();
                 if (fileName.endsWith(ending)) {
                     fileNames.add(fileName);
                 }
