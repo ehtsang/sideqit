@@ -1,4 +1,10 @@
+import java.util.ArrayList;
+
 public interface Diagram {
 
-    public String generateDiagram();
+    public ArrayList<Method> findMethods(String path);
+    
+    public ArrayList<Variable> findVariables(String path);
+
 }
+

@@ -45,11 +45,16 @@ public class Method extends Structure {
     }
 
     public String toString() {
-        String parameters = getParameters().toString().replace("[", "(").replace("]", ")").replace("  ", " ");
-        if(!getReturnType().equals("")){
-            return getModifier() + " " + getReturnType() + " " + getName() + parameters;
+        //String parameters = getParameters().toString().replace("[", "(").replace("]", ")").replace("  ", " ");
+	String param = "(";
+	for(String parameter : parameters){
+		param += parameter;
+	}
+	param += ")";
+	if(!getReturnType().equals("")){
+            return getModifier() + " " + getReturnType() + " " + getName() + param;
         } else {
-            return getModifier() + " " + getName() + parameters;
+            return getModifier() + " " + getName() + param;
         }
     }
 }

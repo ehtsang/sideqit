@@ -7,7 +7,28 @@ import java.util.regex.Pattern;
 
 public class UMLDiagram implements Diagram {
 
-    public String generateDiagram() {return "";}
+    public static void generateDiagram(String path) {
+        ArrayList<Method> methods = new ArrayList<Method>();
+        ArrayList<Variable> variables = new ArrayList<Variable>();
+        ArrayList<String> files = new ArrayList<String>();
+        FileFinder.findFiles(path, files, ".java");
+        //System.out.println(files);
+        UMLDiagram diagram = new UMLDiagram();
+        for(String filename : files){
+            System.out.println("-" + filename);
+            methods = diagram.findMethods(filename);
+            variables = diagram.findVariables(filename);
+            System.out.println("-->Methods:");
+            for(Method method : methods){
+                System.out.println("---|" + method);
+            }
+            System.out.println("-->Variables:");
+            for(Variable variable : variables){
+                System.out.println("---|" + variable);
+            }
+            System.out.println();
+        }
+    }
 
     public ArrayList<Method> findMethods(String path) {
         String name, modifier, returnType;
@@ -58,25 +79,15 @@ public class UMLDiagram implements Diagram {
     }
 
     public static void main(String[] args) {
-        ArrayList<Method> methods = new ArrayList<Method>();
-        ArrayList<Variable> variables = new ArrayList<Variable>();
-        ArrayList<String> files = new ArrayList<String>();
-        FileFinder.findFiles(".", files, ".java");
-        //System.out.println(files);
-        UMLDiagram diagram = new UMLDiagram();
-        for(String filename : files){
-            System.out.println("-" + filename);
-            methods = diagram.findMethods(filename);
-            variables = diagram.findVariables(filename);
-            System.out.println("-->Methods");
-            for(Method method : methods){
-                System.out.println("--|" + method);
-            }
-            System.out.println("-->Variables");
-            for(Variable variable : variables){
-                System.out.println("--|" + variable);
-            }
-            System.out.println();
+        if(args.length < 1){
+            System.out.println("Please provide an argument.");
+            System.exit(1);
         }
+        File directory = new File(args[0]);
+        if (!directory.exists()){
+            System.out.println("Please provide a valid path.");
+            System.exit(1);
+        }
+        generateDiagram(args[0]);
     }
 }
