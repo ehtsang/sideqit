@@ -20,18 +20,37 @@ public class UMLDiagram implements Diagram {
         //System.out.println(files);
         UMLDiagram diagram = new UMLDiagram();
         for(String filename : files){
-            System.out.println("-" + filename);
+            System.out.println(filename);
             methods = diagram.findMethods(filename);
             variables = diagram.findVariables(filename);
             System.out.println("-->Methods:");
             for(Method method : methods){
-                System.out.println("---|" + method);
+                System.out.println("----|" + method);
             }
             System.out.println("-->Variables:");
             for(Variable variable : variables){
-                System.out.println("---|" + variable);
+                System.out.println("----|" + variable);
             }
             System.out.println();
+        }
+    }
+    
+    /*
+    O(1)
+    Pre-condition: None
+    Post-condition: Outputs name of team members and their period
+    */
+    public static void generateCredits() {
+        String edward = "Edward Tsang - Period 4";
+        String leon = "Leon Loi - Period 3";
+        String[][] credits = new String[1][2];
+        credits[0][0] = edward;
+        credits[0][1] = leon;
+        System.out.println("Generator made by:");
+        for (int i = 0; i < credits.length; i++){
+            for(int j = 0; j < credits[0].length; j++){
+                System.out.println(credits[i][j]);
+            }
         }
     }
 
@@ -109,5 +128,6 @@ public class UMLDiagram implements Diagram {
             System.exit(1);
         }
         generateDiagram(args[0]);
+        generateCredits();
     }
 }
