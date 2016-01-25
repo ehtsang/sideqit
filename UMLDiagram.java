@@ -30,7 +30,7 @@ public class UMLDiagram implements Diagram {
         }
 
         // Regex for other methods
-        matcher = Pattern.compile("((?:public|protected|private|static|final)+) +([\\w\\<\\>\\[\\]]+) +(\\w+) *\\(([^\\)]*)\\) *(\\{?|[^;])").matcher(contents);
+        matcher = Pattern.compile("((?:public|protected|private| ?abstract| ?static)+) +([\\w\\<\\>\\[\\]]+) +(\\w+) *\\(([^\\)]*)\\) *(\\{?|[^;])").matcher(contents);
         while (matcher.find()) {
             modifier = matcher.group(1).trim();
             returnType = matcher.group(2).trim();
@@ -51,7 +51,6 @@ public class UMLDiagram implements Diagram {
             String modifier = matcher.group(1).trim();
             String type = matcher.group(2).trim();
             String name = matcher.group(3).trim();
-            // System.out.println(modifier); //TESTING PURPOSES
             Variable variable = new Variable(name, modifier, type);
             variables.add(variable);
         }
@@ -61,23 +60,23 @@ public class UMLDiagram implements Diagram {
     public static void main(String[] args) {
         ArrayList<Method> methods = new ArrayList<Method>();
         ArrayList<Variable> variables = new ArrayList<Variable>();
-	ArrayList<String> files = new ArrayList<String>();
-	FileFinder.findFiles(".", files, ".java");
-	//System.out.println(files);
+        ArrayList<String> files = new ArrayList<String>();
+        FileFinder.findFiles(".", files, ".java");
+        //System.out.println(files);
         UMLDiagram diagram = new UMLDiagram();
         for(String filename : files){
-		System.out.println("-" + filename);
-		methods = diagram.findMethods(filename);
-        	variables = diagram.findVariables(filename);
-        	System.out.println("-->Methods");
-        	for(Method method : methods){
-        	    System.out.println("--|" + method);
-        	}
-        	System.out.println("-->Variables");
-        	for(Variable variable : variables){
-        	    System.out.println("--|" + variable);
-    		}
-		System.out.println();
-	}
+            System.out.println("-" + filename);
+            methods = diagram.findMethods(filename);
+            variables = diagram.findVariables(filename);
+            System.out.println("-->Methods");
+            for(Method method : methods){
+                System.out.println("--|" + method);
+            }
+            System.out.println("-->Variables");
+            for(Variable variable : variables){
+                System.out.println("--|" + variable);
+            }
+            System.out.println();
+        }
     }
 }

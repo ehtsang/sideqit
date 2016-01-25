@@ -45,10 +45,11 @@ public class Method extends Structure {
     }
 
     public String toString() {
-    	if(!getReturnType().equals("")){
-        	return getModifier() + " " + getReturnType() + " " + getName() + " " + getParameters();
-    	} else {
-		return getModifier() + " " + getName() + " " + getParameters();
-	}
+        String parameters = getParameters().toString().replace("[", "(").replace("]", ")").replace("  ", " ");
+        if(!getReturnType().equals("")){
+            return getModifier() + " " + getReturnType() + " " + getName() + parameters;
+        } else {
+            return getModifier() + " " + getName() + parameters;
+        }
     }
 }
