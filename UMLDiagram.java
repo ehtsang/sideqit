@@ -44,13 +44,13 @@ public class UMLDiagram implements Diagram {
 	UMLDiagram diagram = new UMLDiagram();
 	methods = diagram.findMethods("Method.java");
 	variables = diagram.findVariables("Method.java");
-    	System.out.println("Methods");
+    	System.out.println("-->Methods");
 	for(Method method : methods){
-		System.out.println(method);
+		System.out.println("--|" + method);
 	}
-	System.out.println("Variables");
+	System.out.println("-->Variables");
 	for(Variable variable : variables){
-		System.out.println(variable);
+		System.out.println("--|" + variable);
 	}
     }
 }
