@@ -7,12 +7,12 @@ public abstract class Structure {
     public String getName() {
         return name;
     }
-    
+
     /*
-    O(1)
-    Pre-condition: Takes a desired name that is a string
-    Post-condition: Sets name to the input
-    */
+       O(1)
+       Pre-condition: Takes a desired name that is a string
+       Post-condition: Sets name to the input
+       */
     public void setName(String name) {
         this.name = name;
     }
@@ -23,10 +23,10 @@ public abstract class Structure {
     }
 
     /*
-    O(1)
-    Pre-condition: Takes a desired modifier that is a string
-    Post-condition: Sets modifier to the input
-    */
+       O(1)
+       Pre-condition: Takes a desired modifier that is a string
+       Post-condition: Sets modifier to the input
+       */
     public void setModifier(String modifier) {
         this.modifier = modifier;
     }

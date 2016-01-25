@@ -8,21 +8,28 @@ import java.util.regex.Pattern;
 public class UMLDiagram implements Diagram {
 
     /*
-    O(N^2)
-    Pre-condition: Takes a valid path
-    Post-condition: Prints out a full UML diagram
-    */
+       O(N^2)
+       Pre-condition: Takes a valid path
+       Post-condition: Prints out a full UML diagram
+       */
     public static void generateDiagram(String path) {
         ArrayList<Method> methods = new ArrayList<Method>();
         ArrayList<Variable> variables = new ArrayList<Variable>();
         ArrayList<String> files = new ArrayList<String>();
         FileFinder.findFiles(path, files, ".java");
-        //System.out.println(files);
         UMLDiagram diagram = new UMLDiagram();
+        String delimiter, os;
         for(String filePath : files){
-	    String os = System.getProperty("os.name");
-	    System.out.println(os);
-            System.out.println(filePath.substring(filePath.lastIndexOf("\\")+1));
+            os = System.getProperty("os.name");
+
+            // Different file path delimiters...
+            if (os.contains("windows")) {
+                delimiter = "\\";
+            } else {
+                delimiter = "/";
+            }
+            System.out.println(filePath.substring(filePath.lastIndexOf(delimiter)+1));
+
             methods = diagram.findMethods(filePath);
             variables = diagram.findVariables(filePath);
             System.out.println("-->Methods:");
@@ -38,10 +45,10 @@ public class UMLDiagram implements Diagram {
     }
 
     /*
-    O(1)
-    Pre-condition: None
-    Post-condition: Outputs name of team members and their period
-    */
+       O(1)
+       Pre-condition: None
+       Post-condition: Outputs name of team members and their period
+       */
     public static void generateCredits() {
         String edward = "Edward Tsang - Period 4";
         String leon = "Leon Loi - Period 3";
@@ -57,10 +64,10 @@ public class UMLDiagram implements Diagram {
     }
 
     /*
-    O(N^2)
-    Pre-condition: Path exists
-    Post-condition: An ArrayList full of the found methods
-    */
+       O(N^2)
+       Pre-condition: Path exists
+       Post-condition: An ArrayList full of the found methods
+       */
     public ArrayList<Method> findMethods(String path) {
         String name, modifier, returnType;
 
@@ -96,10 +103,10 @@ public class UMLDiagram implements Diagram {
     }
 
     /*
-    O(N^2)
-    Pre-condition: The path exists
-    Post-condition: An ArrayList full of the found variables
-    */
+       O(N^2)
+       Pre-condition: The path exists
+       Post-condition: An ArrayList full of the found variables
+       */
     public ArrayList<Variable> findVariables(String path) {
         ArrayList<Variable> variables = new ArrayList<Variable>();
         String contents = FileFinder.readFile(path);
@@ -115,10 +122,10 @@ public class UMLDiagram implements Diagram {
     }
 
     /*
-    O(N^2)
-    Pre-condition: A potential argument may be given
-    Post-condition: A UML Diagram is generated
-    */
+       O(N^2)
+       Pre-condition: A potential argument may be given
+       Post-condition: A UML Diagram is generated
+       */
     public static void main(String[] args) {
         if(args.length < 1){
             System.out.println("Please provide an argument.");
