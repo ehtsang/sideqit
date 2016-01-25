@@ -19,10 +19,10 @@ public class UMLDiagram implements Diagram {
         FileFinder.findFiles(path, files, ".java");
         //System.out.println(files);
         UMLDiagram diagram = new UMLDiagram();
-        for(String filename : files){
-            System.out.println(filename);
-            methods = diagram.findMethods(filename);
-            variables = diagram.findVariables(filename);
+        for(String filePath : files){
+            System.out.println(filePath.substring(filePath.lastIndexOf("/")+1));
+            methods = diagram.findMethods(filePath);
+            variables = diagram.findVariables(filePath);
             System.out.println("-->Methods:");
             for(Method method : methods){
                 System.out.println("----|" + method);
@@ -34,7 +34,7 @@ public class UMLDiagram implements Diagram {
             System.out.println();
         }
     }
-    
+
     /*
     O(1)
     Pre-condition: None
