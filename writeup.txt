@@ -1,0 +1,61 @@
+Diagram.java
+-->Methods:
+----|public ArrayList<Method> findMethods(String path)
+----|public ArrayList<Variable> findVariables(String path)
+-->Variables:
+
+FileFinder.java
+-->Methods:
+----|public static String readFile(String path)
+----|public static void findFiles(String path ArrayList<String> fileNames String ending)
+-->Variables:
+
+Method.java
+-->Methods:
+----|public Method()
+----|public Method(String name)
+----|public Method(String name String returnType String modifier)
+----|public Method(String name String returnType String modifier ArrayList<String> parameters)
+----|public String getReturnType()
+----|public void setReturnType(String returnType)
+----|public ArrayList<String> getParameters()
+----|public void setParameters(ArrayList<String> parameters)
+----|public String toString()
+-->Variables:
+----|String returnType
+----|ArrayList<String> parameters
+
+Structure.java
+-->Methods:
+----|public String getName()
+----|public void setName(String name)
+----|public String getModifier()
+----|public void setModifier(String modifier)
+----|public abstract String toString()
+-->Variables:
+----|String name
+----|String modifier
+
+UMLDiagram.java
+-->Methods:
+----|public static void generateDiagram(String path)
+----|public static void generateCredits()
+----|public ArrayList<Method> findMethods(String path)
+----|public ArrayList<Variable> findVariables(String path)
+----|public static void main(String[] args)
+-->Variables:
+
+Variable.java
+-->Methods:
+----|public Variable()
+----|public Variable(String name)
+----|public Variable(String name String modifier String type)
+----|public String getType()
+----|public void setType(String type)
+----|public String toString()
+-->Variables:
+----|String type
+
+Generator made by:
+Edward Tsang - Period 4
+Leon Loi - Period 3
